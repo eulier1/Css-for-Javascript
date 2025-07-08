@@ -1,7 +1,7 @@
-import * as React from "react"
+import * as React from "react";
 
-import { SearchForm } from "./search-form"
-import { VersionSwitcher } from "./version-switcher"
+import { SearchForm } from "./search-form";
+import { VersionSwitcher } from "./version-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,139 +13,114 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
+  versions: ["0.0.1"],
   navMain: [
     {
-      title: "Getting Started",
+      title: "Module 1 - Intro",
       url: "#",
       items: [
         {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
+          title: "Introduction",
           url: "#",
         },
       ],
     },
     {
-      title: "Building Your Application",
+      title: "Module 2 - Recap Fundamentals",
       url: "#",
       items: [
         {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
+          title: "Coming Soon",
           url: "#",
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "Module 3 - Rendering Logic",
       url: "#",
       items: [
         {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
+          title: "Coming Soon",
           url: "#",
         },
       ],
     },
     {
-      title: "Architecture",
+      title: "Module 4",
       url: "#",
       items: [
         {
-          title: "Accessibility",
+          title: "Coming Soon",
           url: "#",
         },
+      ],
+    },
+    {
+      title: "Module 5",
+      url: "#",
+      items: [
         {
-          title: "Fast Refresh",
+          title: "Coming Soon",
           url: "#",
         },
+      ],
+    },
+    {
+      title: "Module 6",
+      url: "#",
+      items: [
         {
-          title: "Next.js Compiler",
+          title: "Coming Soon",
           url: "#",
         },
+      ],
+    },
+    {
+      title: "Module 7",
+      url: "#",
+      items: [
         {
-          title: "Supported Browsers",
+          title: "Coming Soon",
           url: "#",
         },
+      ],
+    },
+    {
+      title: "Module 8",
+      url: "#",
+      items: [
         {
-          title: "Turbopack",
+          title: "Coming Soon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Module 9",
+      url: "#",
+      items: [
+        {
+          title: "Coming Soon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Module 10",
+      url: "#",
+      items: [
+        {
+          title: "Coming Soon",
           url: "#",
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -155,7 +130,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           versions={data.versions}
           defaultVersion={data.versions[0]}
         />
-        <SearchForm />
+        {/* <SearchForm /> */}
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
@@ -178,5 +153,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
