@@ -1,30 +1,23 @@
-# Sidebar Layout
+# Css-for-Javascript
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+## Overview
+
+The intention of this repo is to act as a personal note-taking app from the [course of Josh Comeau](https://css-for-js.dev/) of the same name.
+
+## [Personal notes](https://docs.google.com/document/d/1yLhPwOai3lgb_5GGys-d9BRO8I7DJ50fVTzVhhdfEtI/edit?tab=t.0#heading=h.8nq9jnel1gig)
+
+## [Youtube video recording process](https://www.youtube.com/playlist?list=PL_sapWkWdZHEz5v4BRUP5IQGNm32yTiwo)
+
+## Tools
+- React 19
+- Tailwinds
+- RadixUI
+- shadcn-ui/ui
+- Next 15
 
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/eulier1s-projects/v0-sidebar-layout-n1)
 [![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/HvITaVgMBsk)
 
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
 ## Deployment
 
-Your project is live at:
-
-**[https://vercel.com/eulier1s-projects/v0-sidebar-layout-n1](https://vercel.com/eulier1s-projects/v0-sidebar-layout-n1)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/HvITaVgMBsk](https://v0.dev/chat/projects/HvITaVgMBsk)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- Pending
