@@ -21,11 +21,11 @@ const data = {
   navMain: [
     {
       title: "Module 1 - Intro",
-      url: "#",
+      url: "/css-for-js-dev/introduction",
       items: [
         {
           title: "Introduction",
-          url: "#",
+          url: "/css-for-js-dev/introduction",
         },
       ],
     },
