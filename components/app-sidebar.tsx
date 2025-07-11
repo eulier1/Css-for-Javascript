@@ -1,10 +1,11 @@
 "use client"
 
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useWorkingTranslations as useTranslations } from "@/hooks/use-working-translations";
 import { Link } from "@/src/i18n/navigation";
+
 import { SearchForm } from "./search-form";
-import { VersionSwitcher } from "./version-switcher";
+import { LanguageSwitcher } from "./language-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -18,13 +19,10 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-// Version data
-const data = {
-  versions: ["0.0.1"],
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const t = useTranslations('Navigation');
+  
   
   // Dynamic navigation structure with translations
   const navMain = [
@@ -133,10 +131,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher
-          versions={data.versions}
-          defaultVersion={data.versions[0]}
-        />
+        <LanguageSwitcher />
         {/* <SearchForm /> */}
       </SidebarHeader>
       <SidebarContent>

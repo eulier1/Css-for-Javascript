@@ -1,6 +1,8 @@
 "use client"
 
-import { useTranslations } from "next-intl";
+import * as React from "react";
+import { useLocale } from "next-intl";
+import { useWorkingTranslations } from "@/hooks/use-working-translations";
 import { Link } from "@/src/i18n/navigation";
 import {
   Breadcrumb,
@@ -12,7 +14,8 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export function BreadcrumbNav() {
-  const t = useTranslations('Breadcrumb');
+  const t = useWorkingTranslations('Breadcrumb');
+  const currentLocale = useLocale();
 
   return (
     <Breadcrumb>

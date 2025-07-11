@@ -2,7 +2,9 @@ import createMiddleware from 'next-intl/middleware';
 import {routing} from './src/i18n/routing';
 import { NextRequest } from 'next/server';
  
-const isDev = process.env.ENABLE_MIDDLEWARE === 'true';
+// Enable middleware in development, disable only for static export builds
+const isExport = process.env.BUILD_EXPORT === 'true';
+const shouldEnableMiddleware = !isExport;
 
 function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -24,7 +26,7 @@ function middleware(request: NextRequest) {
   return intlMiddleware(request);
 }
 
-export default isDev ? middleware : undefined;
+export default shouldEnableMiddleware ? middleware : undefined;
 
 export const config = {
   matcher: [
