@@ -1,7 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown, GalleryVerticalEnd } from "lucide-react"
+import { Check, ChevronsUpDown, GalleryVerticalEnd, Languages } from "lucide-react"
+import { useTranslations, useLocale } from "next-intl"
+import { usePathname, useRouter } from "@/src/i18n/navigation"
 
 import {
   DropdownMenu,
@@ -15,6 +17,11 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+const locales = [
+  { code: 'en', name: 'English' },
+  { code: 'es', name: 'Español' },
+];
+
 export function VersionSwitcher({
   versions,
   defaultVersion,
@@ -22,7 +29,16 @@ export function VersionSwitcher({
   versions: string[]
   defaultVersion: string
 }) {
-  const [selectedVersion, setSelectedVersion] = React.useState(defaultVersion)
+  const t = useTranslations('Navigation');
+  const currentLocale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const currentLocaleData = locales.find(locale => locale.code === currentLocale) || locales[0];
+
+  const handleLanguageChange = (newLocale: string) => {
+    router.push(pathname, { locale: newLocale });
+  };
 
   return (
     <SidebarMenu>
@@ -37,8 +53,11 @@ export function VersionSwitcher({
                 <GalleryVerticalEnd className="size-4" />
               </div>
               <div className="flex flex-col gap-0.5 leading-none">
-                <span className="font-semibold">Css - Personal Notes</span>
-                <span className="">v{selectedVersion}</span>
+                <span className="font-semibold">{t('title')}</span>
+                <div className="flex items-center gap-1">
+                  <Languages className="size-3" />
+                  <span className="text-xs">{currentLocaleData.name}</span>
+                </div>
               </div>
               <ChevronsUpDown className="ml-auto" />
             </SidebarMenuButton>
@@ -47,13 +66,13 @@ export function VersionSwitcher({
             className="w-[--radix-dropdown-menu-trigger-width]"
             align="start"
           >
-            {versions.map((version) => (
+            {locales.map((locale) => (
               <DropdownMenuItem
-                key={version}
-                onSelect={() => setSelectedVersion(version)}
+                key={locale.code}
+                onSelect={() => handleLanguageChange(locale.code)}
               >
-                v{version}{" "}
-                {version === selectedVersion && <Check className="ml-auto" />}
+                <span>{locale.name}</span>
+                {locale.code === currentLocale && <Check className="ml-auto" />}
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>

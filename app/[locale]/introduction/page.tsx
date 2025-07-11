@@ -1,3 +1,9 @@
+import { routing } from '@/src/i18n/routing';
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default function Introduction() {
   return (
     <div className="flex flex-1 flex-col gap-4 p-4">
