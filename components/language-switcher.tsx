@@ -7,8 +7,7 @@ import {
   GalleryVerticalEnd,
   Languages,
 } from "lucide-react";
-import { useLocale } from "next-intl";
-import { useWorkingTranslations } from "@/hooks/use-working-translations";
+import { useTranslations, useLocale } from "next-intl";
 import { usePathname, Link } from "@/src/i18n/navigation";
 
 import {
@@ -29,7 +28,7 @@ const locales = [
 ];
 
 export function LanguageSwitcher() {
-  const t = useWorkingTranslations("Navigation");
+  const t = useTranslations("Navigation");
   const hookLocale = useLocale(); // This might be stale
   const pathname = usePathname(); // Should return path without locale prefix
 

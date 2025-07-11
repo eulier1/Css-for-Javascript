@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {NextIntlClientProvider} from 'next-intl';
+import { ProviderWrapper } from "@/components/provider-wrapper";
 import {getMessages} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
 import "../globals.css";
@@ -44,7 +44,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <ProviderWrapper messages={messages} locale={locale}>
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
@@ -57,7 +57,7 @@ export default async function LocaleLayout({
             </SidebarInset>
           </SidebarProvider>
           <DevDebug />
-        </NextIntlClientProvider>
+        </ProviderWrapper>
       </body>
     </html>
   );

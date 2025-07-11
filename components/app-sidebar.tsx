@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react";
-import { useWorkingTranslations as useTranslations } from "@/hooks/use-working-translations";
+import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/navigation";
 
 import { SearchForm } from "./search-form";
