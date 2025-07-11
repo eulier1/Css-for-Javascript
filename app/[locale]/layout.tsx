@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import { DevDebug } from "@/components/dev-debug";
 import { routing } from '@/src/i18n/routing';
 
 type Props = {
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
               {children}
             </SidebarInset>
           </SidebarProvider>
+          <DevDebug />
         </NextIntlClientProvider>
       </body>
     </html>
