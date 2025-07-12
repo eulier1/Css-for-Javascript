@@ -6,6 +6,14 @@ import { Link } from "@/src/i18n/navigation";
 
 import { SearchForm } from "./search-form";
 import { LanguageSwitcher } from "./language-switcher";
+
+// Type definitions for navigation
+type ValidPathname = "/" | "/introduction";
+
+// Type guard to narrow URLs to valid pathnames
+function isValidPathname(url: string): url is ValidPathname {
+  return url === "/" || url === "/introduction";
+}
 import {
   Sidebar,
   SidebarContent,
@@ -144,10 +152,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((subItem) => (
                   <SidebarMenuItem key={subItem.titleKey}>
                     <SidebarMenuButton asChild isActive={subItem.url === "/introduction"}>
-                      {subItem.url === "#" ? (
-                        <span className="cursor-not-allowed opacity-50">{t(subItem.titleKey)}</span>
-                      ) : (
+                      {isValidPathname(subItem.url) ? (
                         <Link href={subItem.url}>{t(subItem.titleKey)}</Link>
+                      ) : (
+                        <span className="cursor-not-allowed opacity-50">{t(subItem.titleKey)}</span>
                       )}
                     </SidebarMenuButton>
                   </SidebarMenuItem>

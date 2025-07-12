@@ -27,6 +27,14 @@ const locales = [
   { code: "es", name: "Español" },
 ];
 
+// Type definitions for navigation (same as AppSidebar)
+type ValidPathname = "/" | "/introduction";
+
+// Type guard to ensure valid pathnames
+function isValidPathname(url: string): url is ValidPathname {
+  return url === "/" || url === "/introduction";
+}
+
 export function LanguageSwitcher() {
   const t = useTranslations("Navigation");
   const hookLocale = useLocale(); // This might be stale
@@ -69,6 +77,8 @@ export function LanguageSwitcher() {
   };
 
   const safePath = getCurrentPath(pathname);
+  // Ensure we only use valid pathnames for Link href
+  const linkPath = isValidPathname(safePath) ? safePath : "/";
 
 
   return (
@@ -100,7 +110,7 @@ export function LanguageSwitcher() {
             {locales.map((locale) => (
               <DropdownMenuItem key={locale.code} asChild>
                 <Link
-                  href={safePath}
+                  href={linkPath}
                   locale={locale.code}
                   className="flex w-full items-center justify-between"
                 >
