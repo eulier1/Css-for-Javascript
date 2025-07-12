@@ -1,0 +1,31 @@
+{
+  "Navigation": {
+    "title": "Css - Personal Notes",
+    "modules": {
+      "module1": "Module 1 - Intro",
+      "module2": "Module 2 - Recap Fundamentals",
+      "module3": "Module 3 - Rendering Logic",
+      "module4": "Module 4",
+      "module5": "Module 5",
+      "module6": "Module 6",
+      "module7": "Module 7",
+      "module8": "Module 8",
+      "module9": "Module 9",
+      "module10": "Module 10",
+      "introduction": "Introduction",
+      "comingSoon": "Coming Soon"
+    }
+  },
+  "Breadcrumb": {
+    "module1": "Module 1 - Intro",
+    "introduction": "Introduction"
+  },
+  "LanguageSwitcher": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "Metadata": {
+    "title": "Css for JS Dev",
+    "description": "Eulier's Personal notes"
+  }
+}

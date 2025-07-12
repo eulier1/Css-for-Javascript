@@ -1,0 +1,31 @@
+{
+  "Navigation": {
+    "title": "Css - Notas Personales",
+    "modules": {
+      "module1": "Módulo 1 - Introducción",
+      "module2": "Módulo 2 - Fundamentos",
+      "module3": "Módulo 3 - Lógica de Renderizado",
+      "module4": "Módulo 4",
+      "module5": "Módulo 5",
+      "module6": "Módulo 6",
+      "module7": "Módulo 7",
+      "module8": "Módulo 8",
+      "module9": "Módulo 9",
+      "module10": "Módulo 10",
+      "introduction": "Introducción",
+      "comingSoon": "Próximamente"
+    }
+  },
+  "Breadcrumb": {
+    "module1": "Módulo 1 - Introducción",
+    "introduction": "Introducción"
+  },
+  "LanguageSwitcher": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "Metadata": {
+    "title": "Css para Desarrolladores JS",
+    "description": "Notas personales de Eulier"
+  }
+}

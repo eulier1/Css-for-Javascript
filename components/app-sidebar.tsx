@@ -1,7 +1,19 @@
+"use client"
+
 import * as React from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 
 import { SearchForm } from "./search-form";
-import { VersionSwitcher } from "./version-switcher";
+import { LanguageSwitcher } from "./language-switcher";
+
+// Type definitions for navigation
+type ValidPathname = "/" | "/introduction";
+
+// Type guard to narrow URLs to valid pathnames
+function isValidPathname(url: string): url is ValidPathname {
+  return url === "/" || url === "/introduction";
+}
 import {
   Sidebar,
   SidebarContent,
@@ -15,134 +27,136 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-// This is sample data.
-const data = {
-  versions: ["0.0.1"],
-  navMain: [
-    {
-      title: "Module 1 - Intro",
-      url: "/css-for-js-dev/introduction",
-      items: [
-        {
-          title: "Introduction",
-          url: "/css-for-js-dev/introduction",
-        },
-      ],
-    },
-    {
-      title: "Module 2 - Recap Fundamentals",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 3 - Rendering Logic",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 4",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 5",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 6",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 7",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 8",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 9",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Module 10",
-      url: "#",
-      items: [
-        {
-          title: "Coming Soon",
-          url: "#",
-        },
-      ],
-    },
-  ],
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const t = useTranslations('Navigation');
+  
+  
+  // Dynamic navigation structure with translations
+  const navMain = [
+    {
+      titleKey: "modules.module1",
+      url: "/introduction",
+      items: [
+        {
+          titleKey: "modules.introduction",
+          url: "/introduction",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module2",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module3",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module4",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module5",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module6",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module7",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module8",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module9",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+    {
+      titleKey: "modules.module10",
+      url: "#",
+      items: [
+        {
+          titleKey: "modules.comingSoon",
+          url: "#",
+        },
+      ],
+    },
+  ];
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher
-          versions={data.versions}
-          defaultVersion={data.versions[0]}
-        />
+        <LanguageSwitcher />
         {/* <SearchForm /> */}
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
+        {navMain.map((item) => (
+          <SidebarGroup key={item.titleKey}>
+            <SidebarGroupLabel>{t(item.titleKey)}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                {item.items.map((subItem) => (
+                  <SidebarMenuItem key={subItem.titleKey}>
+                    <SidebarMenuButton asChild isActive={subItem.url === "/introduction"}>
+                      {isValidPathname(subItem.url) ? (
+                        <Link href={subItem.url}>{t(subItem.titleKey)}</Link>
+                      ) : (
+                        <span className="cursor-not-allowed opacity-50">{t(subItem.titleKey)}</span>
+                      )}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
