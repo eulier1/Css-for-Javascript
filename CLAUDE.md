@@ -12,26 +12,23 @@ This is a personal note-taking application for the "CSS for JavaScript Developer
 # Development server
 pnpm dev
 
-# Production build (static export for deployment)
+# Production build (optimized static generation)
 pnpm build
-
-# Development build (with SSR)
-pnpm build:dev
 
 # Lint check
 pnpm lint
 
-# Serve static export locally
-pnpm serve
+# Start production server (for testing)
+pnpm start
 ```
 
 ## Architecture
 
 ### Internationalization Setup
 - **Localized routing**: All pages under `/[locale]/` (en, es)
-- **Conditional middleware**: Only runs in production to enable static export in development
+- **next-intl middleware**: Handles locale detection and routing in all environments
 - **Translation files**: `messages/en.json` and `messages/es.json`
-- **Build modes**: Development uses SSR, production uses static export via `BUILD_EXPORT=true`
+- **Static generation**: Next.js 15 automatic optimization generates static pages for all locales
 
 ### Component Structure
 - **shadcn/ui pattern**: Complete UI component library in `components/ui/`
@@ -43,8 +40,8 @@ pnpm serve
 - `src/i18n/routing.ts`: Route definitions and locale configuration
 - `src/i18n/navigation.ts`: Localized navigation helpers  
 - `app/[locale]/layout.tsx`: Locale-specific layout with sidebar
-- `middleware.ts`: Handles locale routing (production only)
-- `next.config.js`: Dual build configuration for dev/prod
+- `middleware.ts`: next-intl middleware for locale routing
+- `next.config.mjs`: Optimized for static generation with i18n support
 
 ## Tech Stack
 - **Next.js 15.2.4** with App Router and React 19
@@ -54,7 +51,12 @@ pnpm serve
 - **Radix UI** for accessible components
 
 ## Important Notes
-- Build tolerates TypeScript/ESLint errors for rapid development
-- Static export mode disables image optimization
+- Uses Next.js 15 automatic static optimization for production builds
+- Images are unoptimized for static hosting compatibility
 - Sidebar navigation structure matches course module organization
 - All new components should follow shadcn/ui patterns and support theming
+
+## Deployment
+- **Recommended**: Modern static hosting (Vercel, Netlify) with Node.js runtime support
+- **Build output**: Statically optimized pages with middleware support
+- **Hosting**: Requires platforms that support Next.js middleware for optimal locale routing
