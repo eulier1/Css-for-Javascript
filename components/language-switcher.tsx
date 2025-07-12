@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   Check,
   ChevronsUpDown,
@@ -27,62 +26,15 @@ const locales = [
   { code: "es", name: "Español" },
 ];
 
-// Type definitions for navigation (same as AppSidebar)
-type ValidPathname = "/" | "/introduction";
-
-// Type guard to ensure valid pathnames
-function isValidPathname(url: string): url is ValidPathname {
-  return url === "/" || url === "/introduction";
-}
-
 export function LanguageSwitcher() {
   const t = useTranslations("Navigation");
-  const hookLocale = useLocale(); // This might be stale
-  const pathname = usePathname(); // Should return path without locale prefix
-
-  // Extract actual locale from URL as source of truth
-  const getActualLocale = () => {
-    if (typeof window !== "undefined") {
-      const urlPath = window.location.pathname;
-      const localeFromUrl = locales.find(locale => 
-        urlPath.startsWith(`/${locale.code}`)
-      )?.code;
-      return localeFromUrl || 'en';
-    }
-    return hookLocale;
-  };
-
-  const currentLocale = getActualLocale();
+  const currentLocale = useLocale();
+  const pathname = usePathname();
+  
   const currentLocaleData = locales.find((locale) => locale.code === currentLocale) || locales[0];
 
-  // Force re-render when locale changes
-  const [renderKey, setRenderKey] = React.useState(0);
-  
-  React.useEffect(() => {
-    setRenderKey(prev => prev + 1);
-  }, [currentLocale]);
-
-  // According to next-intl docs, usePathname should return locale-free path
-  // If it doesn't, we need to extract it manually from the current URL
-  const getCurrentPath = (pathname: ReturnType<typeof usePathname>) => {
-    if (typeof window !== "undefined") {
-      const currentPath = window.location.pathname;
-      // Remove locale prefix from current URL path
-      const localePattern = new RegExp(
-        `^/(${locales.map((l) => l.code).join("|")})`
-      );
-      return currentPath.replace(localePattern, "") || "/";
-    }
-    return pathname;
-  };
-
-  const safePath = getCurrentPath(pathname);
-  // Ensure we only use valid pathnames for Link href
-  const linkPath = isValidPathname(safePath) ? safePath : "/";
-
-
   return (
-    <SidebarMenu key={renderKey}>
+    <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -110,7 +62,7 @@ export function LanguageSwitcher() {
             {locales.map((locale) => (
               <DropdownMenuItem key={locale.code} asChild>
                 <Link
-                  href={linkPath}
+                  href={pathname}
                   locale={locale.code}
                   className="flex w-full items-center justify-between"
                 >

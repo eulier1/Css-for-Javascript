@@ -1,28 +1,16 @@
-import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
+import {hasLocale} from 'next-intl';
 import {routing} from './routing';
-
-const isDev = process.env.NODE_ENV === 'development';
  
-export default getRequestConfig(async ({locale}) => {
-  // Handle undefined locale (use default)
-  if (!locale) {
-    locale = routing.defaultLocale;
-  }
-  
-  // Validate that the incoming `locale` parameter is valid
-  if (!routing.locales.includes(locale as any)) {
-    // Only call notFound in development
-    if (isDev) {
-      notFound();
-    }
-    // For invalid locale, use default locale
-    locale = routing.defaultLocale;
-  }
+export default getRequestConfig(async ({requestLocale}) => {
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
  
   return {
     locale,
     messages: (await import(`../../messages/${locale}.json`)).default,
-    timeZone: 'UTC' // Add default timezone to prevent hydration warnings
+    timeZone: 'UTC'
   };
 });

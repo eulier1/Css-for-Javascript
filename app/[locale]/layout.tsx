@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { ProviderWrapper } from "@/components/provider-wrapper";
-import {getMessages} from 'next-intl/server';
-import {getTranslations} from 'next-intl/server';
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages, getTranslations} from 'next-intl/server';
+import {setRequestLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 import "../globals.css";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -39,12 +40,21 @@ export default async function LocaleLayout({
   params
 }: Props) {
   const { locale } = await params;
+  
+  // Validate locale and enable static rendering
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+  
+  // Enable static rendering for this locale
+  setRequestLocale(locale);
+  
   const messages = await getMessages();
   
   return (
     <html lang={locale}>
       <body>
-        <ProviderWrapper messages={messages} locale={locale}>
+        <NextIntlClientProvider messages={messages} timeZone="UTC">
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
@@ -57,7 +67,7 @@ export default async function LocaleLayout({
             </SidebarInset>
           </SidebarProvider>
           <DevDebug />
-        </ProviderWrapper>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

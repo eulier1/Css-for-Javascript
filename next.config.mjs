@@ -4,10 +4,13 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Use Next.js 15 automatic static optimization instead of manual export
-  // This provides better i18n integration and eliminates warnings
+  // Use static export only when BUILD_EXPORT is true (production)
+  ...(process.env.BUILD_EXPORT === 'true' && {
+    output: 'export',
+    trailingSlash: true,
+  }),
   images: {
-    unoptimized: true, // Keep for static hosting compatibility
+    unoptimized: true,
   },
 };
 
