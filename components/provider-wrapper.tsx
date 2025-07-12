@@ -31,5 +31,5 @@ export function ProviderWrapper({ children, messages: serverMessages, locale }: 
     });
   }, [currentLocale]);
   
-  return <NextIntlClientProvider key={key} messages={currentMessages} locale={currentLocale}>{children}</NextIntlClientProvider>;
+  return <NextIntlClientProvider key={key} messages={currentMessages} locale={currentLocale} timeZone="UTC">{children}</NextIntlClientProvider>;
 }
