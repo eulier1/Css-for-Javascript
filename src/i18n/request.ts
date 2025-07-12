@@ -2,7 +2,6 @@ import {notFound} from 'next/navigation';
 import {getRequestConfig} from 'next-intl/server';
 import {routing} from './routing';
 
-const isExport = process.env.BUILD_EXPORT === 'true';
 const isDev = process.env.NODE_ENV === 'development';
  
 export default getRequestConfig(async ({locale}) => {
@@ -13,11 +12,11 @@ export default getRequestConfig(async ({locale}) => {
   
   // Validate that the incoming `locale` parameter is valid
   if (!routing.locales.includes(locale as any)) {
-    // Only call notFound in development with middleware, not during static export
-    if (isDev && !isExport) {
+    // Only call notFound in development
+    if (isDev) {
       notFound();
     }
-    // For static export or invalid locale, use default locale
+    // For invalid locale, use default locale
     locale = routing.defaultLocale;
   }
  

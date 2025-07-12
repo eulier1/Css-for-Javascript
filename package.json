@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "BUILD_EXPORT=true next build",
-    "build:dev": "next build",
+    "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start",
-    "serve": "cd out && python3 -m http.server 8000"
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
