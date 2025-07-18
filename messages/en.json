@@ -1,0 +1,47 @@
+{
+  "Navigation": {
+    "title": "Css for JS dev - Personal Notes",
+    "modules": {
+      "module1": "Module 1 - Intro",
+      "module2": "Module 2 - Fundamentals",
+      "module3": "Module 3 - Rendering Logic",
+      "module4": "Module 4",
+      "module5": "Module 5",
+      "module6": "Module 6",
+      "module7": "Module 7",
+      "module8": "Module 8",
+      "module9": "Module 9",
+      "module10": "Module 10",
+      "introduction": "Introduction",
+      "comingSoon": "Coming Soon"
+    }
+  },
+  "Breadcrumb": {
+    "module1": "Module 1 - Intro",
+    "introduction": "Introduction"
+  },
+  "LanguageSwitcher": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "Metadata": {
+    "title": "Css for JS dev",
+    "description": "Eulier's Personal notes"
+  },
+  "Content": {
+    "module1": {
+      "section1": {
+        "title": "Introduction",
+        "description": "To get a better sense of how React and CSS works, it's recommended to start with this course and after the Module 0, and then shift to <link>The Joy of React</link>. I’ll go with this, since it will help me to develop the notion of <strong>why</strong>, <strong>what</strong> and <strong>how</strong> does CSS and React dance together."
+      },
+      "section2": {
+        "title": "A word of Learning",
+        "description": {
+          "paragraph1": "Most learning experiences are based on following instructions and replication (most courses out there).",
+          "paragraph2": "However, there is now evidence that <link1>error correction</link1> and a <link2>growth mindset</link2> are ways to invite learning from mistakes and understanding where they came from.",
+          "paragraph3": "<link> Blocking vs Interleaving </link> learning, describe how blocking your attention for a specific time and then shifting to another (relevant) topic is a way for your brain to develop the neuronal path to access information and see how they relate to each other."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "Navigation": {
+    "title": "CSS para JS dev - Notas Personales",
+    "modules": {
+      "module1": "Módulo 1 - Introducción",
+      "module2": "Módulo 2 - Fundamentos",
+      "module3": "Módulo 3 - Lógica de Renderizado",
+      "module4": "Módulo 4",
+      "module5": "Módulo 5",
+      "module6": "Módulo 6",
+      "module7": "Módulo 7",
+      "module8": "Módulo 8",
+      "module9": "Módulo 9",
+      "module10": "Módulo 10",
+      "introduction": "Introducción",
+      "comingSoon": "Próximamente"
+    }
+  },
+  "Breadcrumb": {
+    "module1": "Módulo 1 - Introducción",
+    "introduction": "Introducción"
+  },
+  "LanguageSwitcher": {
+    "english": "English",
+    "spanish": "Español"
+  },
+  "Metadata": {
+    "title": "CSS para JS dev",
+    "description": "Notas personales de Eulier"
+  },
+  "Content": {
+    "module1": {
+      "section1": {
+        "title": "Introducción",
+        "description": "Para obtener una mejor comprensión de cómo funcionan React y CSS, se recomienda comenzar con este curso y después del Módulo 0, cambiar a <link>The Joy of React</link>. Seguiré este enfoque, ya que me ayudará a desarrollar la noción de <strong>por qué</strong>, <strong>qué</strong> y <strong>cómo</strong> CSS y React bailan juntos."
+      },
+      "section2": {
+        "title": "Una palabra sobre Aprender",
+        "description": {
+          "paragraph1": "La mayoría de las experiencias de aprendizaje se basan en seguir instrucciones y replicación (la mayoría de cursos que existen).",
+          "paragraph2": "Sin embargo, ahora hay evidencia de que <link1>la corrección de errores</link1> y una <link2>mentalidad de crecimiento</link2> son formas de invitar al aprendizaje desde los errores y entender de dónde provienen.",
+          "paragraph3": "El aprendizaje <link>Bloqueado vs Intercalado</link> describe cómo bloquear tu atención por un tiempo específico y luego cambiar a otro tema (relevante) es una forma para que tu cerebro desarrolle el camino neuronal para acceder a la información y ver cómo se relacionan entre sí."
+        }
+      }
+    }
+  }
+}
