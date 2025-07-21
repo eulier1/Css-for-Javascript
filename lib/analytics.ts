@@ -110,7 +110,7 @@ export const getResourceType = (url: string): string => {
   if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) return 'youtube';
   if (hostname.includes('coursera.org')) return 'coursera';
   if (hostname.includes('the-joy-of-react') || hostname.includes('joyofreact')) return 'joy_of_react';
-  if (hostname.includes('academicaffairs.arizona.edu')) return 'interleaving_study';
+  if (hostname.includes('academicaffairs.arizona.edu')) return 'interleaving_strategy';
   
   return 'external';
 };
