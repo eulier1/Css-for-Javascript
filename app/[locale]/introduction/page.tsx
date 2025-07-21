@@ -95,9 +95,9 @@ export default async function Introduction({
                   {t.rich("section2.description.paragraph3", {
                     link: (chunks) => (
                       <TrackedExternalLink
-                        href="https://www.coursera.org/learn/learning-how-to-learn"
+                        href="https://academicaffairs.arizona.edu/l2l-strategy-interleaving"
                         className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
-                        resourceName="coursera"
+                        resourceName="interleaving_strategy"
                       >
                         {chunks}
                         <ExternalLink className="h-4 w-4" />
