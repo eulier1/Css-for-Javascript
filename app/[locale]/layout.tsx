@@ -3,6 +3,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
 import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import "../globals.css";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -13,6 +14,7 @@ import {
 import { AppSidebar } from "@/components/app-sidebar";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { DevDebug } from "@/components/dev-debug";
+import { AnalyticsWrapper } from "@/components/analytics-wrapper";
 import { routing } from '@/src/i18n/routing';
 
 type Props = {
@@ -54,19 +56,26 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
+        {/* Google Analytics 4 */}
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
+        
         <NextIntlClientProvider messages={messages} timeZone="UTC">
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                <SidebarTrigger className="-ml-1" />
-                <Separator orientation="vertical" className="mr-2 h-4" />
-                <BreadcrumbNav />
-              </header>
-              {children}
-            </SidebarInset>
-          </SidebarProvider>
-          <DevDebug />
+          <AnalyticsWrapper>
+            <SidebarProvider>
+              <AppSidebar />
+              <SidebarInset>
+                <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                  <SidebarTrigger className="-ml-1" />
+                  <Separator orientation="vertical" className="mr-2 h-4" />
+                  <BreadcrumbNav />
+                </header>
+                {children}
+              </SidebarInset>
+            </SidebarProvider>
+            <DevDebug />
+          </AnalyticsWrapper>
         </NextIntlClientProvider>
       </body>
     </html>

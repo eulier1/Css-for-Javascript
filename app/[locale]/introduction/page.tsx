@@ -11,6 +11,7 @@ import {
 import { CloudinaryGallery } from "@/components/ui/cloudinary-gallery";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { ExternalLink as TrackedExternalLink } from "@/components/tracked-link";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -40,13 +41,14 @@ export default async function Introduction({
             <CardDescription className="text-base md:text-lg leading-relaxed text-muted-foreground">
               {t.rich("section1.description", {
                 link: (chunks) => (
-                  <a
+                  <TrackedExternalLink
                     href="https://the-joy-of-react-notes.vercel.app"
                     className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                    resourceName="joy_of_react"
                   >
                     {chunks}
                     <ExternalLink className="h-4 w-4" />
-                  </a>
+                  </TrackedExternalLink>
                 ),
                 strong: (chunks) => (
                   <strong className="font-bold text-foreground">
@@ -68,35 +70,38 @@ export default async function Introduction({
                 <p className="text-muted-foreground">
                   {t.rich("section2.description.paragraph2", {
                     link1: (chunks) => (
-                      <a
+                      <TrackedExternalLink
                         href="https://www.hubermanlab.com/episode/using-failures-movement-and-balance-to-learn-faster"
                         className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                        resourceName="huberman_lab"
                       >
                         {chunks}
                         <ExternalLink className="h-4 w-4" />
-                      </a>
+                      </TrackedExternalLink>
                     ),
                     link2: (chunks) => (
-                      <a
+                      <TrackedExternalLink
                         href="https://www.youtube.com/watch?v=-71zdXCMU6A&t=2622s"
                         className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                        resourceName="growth_mindset"
                       >
                         {chunks}
                         <ExternalLink className="h-4 w-4" />
-                      </a>
+                      </TrackedExternalLink>
                     ),
                   })}
                 </p>
                 <p className="text-muted-foreground">
                   {t.rich("section2.description.paragraph3", {
                     link: (chunks) => (
-                      <a
+                      <TrackedExternalLink
                         href="https://www.coursera.org/learn/learning-how-to-learn"
                         className="text-blue-600 hover:underline font-medium inline-flex items-center gap-1"
+                        resourceName="coursera"
                       >
                         {chunks}
                         <ExternalLink className="h-4 w-4" />
-                      </a>
+                      </TrackedExternalLink>
                     ),
                   })}
                 </p>
